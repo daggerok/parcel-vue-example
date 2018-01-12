@@ -1,0 +1,27 @@
+language: node_js
+
+env:
+  global:
+    TERM=dumb
+
+node_js:
+  - 6
+  - 7
+  - 8
+  - 9
+  - lts/*
+
+install: true
+
+before_script:
+  - npm i -g yarn npm-check-updates
+
+script:
+  - yarn -i
+  - yarn build
+  - yarn pregithub
+  - if [ -f npm-debug.log ]; then cat npm-debug.log; fi
+  - ncu -u
+  - rm -rf yarn.lock
+  - yarn build
+  - yarn pregithub

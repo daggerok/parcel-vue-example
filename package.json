@@ -1,0 +1,38 @@
+{
+  "name": "parcel-vue-example",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-preset-env": "1.6.1",
+    "gh-pages": "1.1.0",
+    "ncp": "2.0.0",
+    "node-sass": "4.7.2",
+    "npm-run-all": "4.1.2",
+    "parcel-bundler": "1.4.1"
+  },
+  "dependencies": {
+    "hammerjs": "2.0.8",
+    "jquery": "3.2.1",
+    "materialize-css": "0.100.2",
+    "vue": "2.5.13"
+  },
+  "scripts": {
+    "start": "parcel -p 3000 ./app/index.html",
+    "build": "npm-run-all build:*",
+    "build:build": "parcel build ./app/index.html --public-url '/'",
+    "build:404": "ncp ./dist/index.html ./dist/404.html",
+    "build:nojekyll": "touch ./dist/.nojekyll",
+    "pregithub": "npm-run-all pregithub:*",
+    "pregithub:build": "parcel build ./app/index.html --public-url '/parcel-vue-example/' --no-cache",
+    "pregithub:404": "ncp ./dist/index.html ./dist/404.html",
+    "pregithub:nojekyll": "touch ./dist/.nojekyll",
+    "github": "gh-pages --dist ./dist/ --src '**/*' --branch gh-pages --dotfiles=true -m \"Github Pages $(date +%Y-%m-%d) deployment\""
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "homepage": "https://daggerok.github.io/parcel-vue-example"
+}
